@@ -10513,6 +10513,10 @@ enifed("ember-htmlbars/node-managers/component-node-manager", ["exports", "ember
       createOptions._controller = _emberHtmlbarsHooksGetValue["default"](parentScope.locals.controller);
     }
 
+    //allow access to default template
+    if (templates && templates['default'])
+      createOptions._blockTemplate = Ember.HTMLBars.template(templates['default']);
+
     // this flag is set when a block was provided so that components can see if
     // `this.get('template')` is truthy.  this is added for backwards compat only
     // and accessing `template` prop on a component will trigger a deprecation
